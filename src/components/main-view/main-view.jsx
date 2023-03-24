@@ -1,34 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 
 export const MainView = () => {
-    const [movies, setMovies] = useState([
-        {
-            id: 1,
-            title: "The Room",
-            description: "This is a very bad movie.",
-            imageURL: "https://via.placeholder.com/150",
-            genre: { name: "Drama" },
-            director: { name: "Tommy Wisseau" }
-        },
-        {
-            id: 2,
-            title: "House of the Dead",
-            description: "This is a very bad movie.",
-            imageURL: "https://via.placeholder.com/150",
-            genre: { name: "Action" },
-            director: { name: "Uwe Boll" }
-        },
-        {
-            id: 3,
-            title: "Bloodrayne",
-            description: "This is a very bad movie.",
-            imageURL: "https://via.placeholder.com/150",
-            genre: { name: "Action" },
-            director: { name: "Uwe Boll" }
-        }
-    ]);
+    const [movies, setMovies] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        fetch("https://dark-blue-lizard-kilt.cyclic.app/movies")
+            .then((response) => response.json())
+            .then((data) => {
+                setMovies(data);
+                setLoading(false);
+            })
+            .catch((error) => {
+                setError(error);
+                setLoading(false);
+            });
+    }, []);
+    
     const [selectedMovie, setSelectedMovie] = useState(null);
 
     const onMovieClick = (movie) => {
