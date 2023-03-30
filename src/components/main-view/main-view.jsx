@@ -61,7 +61,7 @@ export const MainView = () => {
     }
 
     if (movies.length === 0) {
-        return <div>The list is empty, oh no!
+        return <div>No movies found
         </div>
     }
 
