@@ -1,5 +1,34 @@
-.my-flix {
-  color: #4682b4;
+body {
+  background-color: #f7f7f7;
+  font-family: Lato, sans-serif;
+}
+
+.btn-primary {
+  background-color: #ab369f;
+  border: none;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  box-shadow: none;
+  background-color: #842a7b;
+}
+
+.btn-accent {
+  background-color: #3c6e71;
+  border: none;
+}
+
+.btn-accent:hover, .btn-accent:focus {
+  box-shadow: none;
+  background-color: #2a4e50;
+}
+
+.text-primary {
+  color: #ab369f;
+}
+
+.text-accent {
+  color: #3c6e71;
 }
 
 /*# sourceMappingURL=index.ce1d6491.css.map */

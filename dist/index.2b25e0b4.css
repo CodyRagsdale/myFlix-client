@@ -1,0 +1,91 @@
+body {
+  background-color: #f7f7f7;
+  font-family: Lato, sans-serif;
+}
+
+.btn-primary {
+  background-color: #ab369f;
+  border: none;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  box-shadow: none;
+  background-color: #842a7b;
+}
+
+.btn-accent {
+  background-color: #3c6e71;
+  border: none;
+}
+
+.btn-accent:hover, .btn-accent:focus {
+  box-shadow: none;
+  background-color: #2a4e50;
+}
+
+.text-primary {
+  color: #ab369f;
+}
+
+.text-accent {
+  color: #3c6e71;
+}
+
+.main-view {
+  padding: 50px;
+}
+
+.main-view .row {
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.main-view .row .col-md-3 {
+  margin-bottom: 30px;
+}
+
+.main-view .btn-danger {
+  background-color: #f7f7f7;
+  border: none;
+}
+
+.main-view .btn-danger:hover {
+  background-color: #dedede;
+}
+
+body {
+  background-color: #f7f7f7;
+  font-family: Lato, sans-serif;
+}
+
+.btn-primary {
+  background-color: #ab369f;
+  border: none;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  box-shadow: none;
+  background-color: #842a7b;
+}
+
+.btn-accent {
+  background-color: #3c6e71;
+  border: none;
+}
+
+.btn-accent:hover, .btn-accent:focus {
+  box-shadow: none;
+  background-color: #2a4e50;
+}
+
+.text-primary {
+  color: #ab369f;
+}
+
+.text-accent {
+  color: #3c6e71;
+}
+
+/*# sourceMappingURL=index.2b25e0b4.css.map */
