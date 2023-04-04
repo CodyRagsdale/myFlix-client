@@ -34,7 +34,7 @@ export const SignupView = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form class="signup-view" onSubmit={handleSubmit}>
       <Form.Text className="text-muted">Not Registered?</Form.Text>
       <Form.Group controlId="formUsername">
         <Form.Label>Username:</Form.Label>

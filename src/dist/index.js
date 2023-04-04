@@ -2503,13 +2503,13 @@ process.umask = function() {
     return 0;
 };
 
-},{}],"k9SBr":[function(require,module,exports) {
+},{}],"7gyKe":[function(require,module,exports) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
-module.bundle.HMR_BUNDLE_ID = "022c1b16b4b6dfad";
+module.bundle.HMR_BUNDLE_ID = "10485a0f0d6fcb10";
 "use strict";
 /* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, chrome, browser, globalThis, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
 import type {
@@ -27316,7 +27316,7 @@ $RefreshReg$(_c, "MainView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"21dqq","../movie-card/movie-card":"bwuIu","../movie-view/movie-view":"ggaUx","../login-view/login-view":"9YtA0","../signup-view/signup-view":"4OGiN","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"7J5Ml","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"imYHo","react/jsx-dev-runtime":"iTorj"}],"bwuIu":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../movie-card/movie-card":"bwuIu","../movie-view/movie-view":"ggaUx","../login-view/login-view":"9YtA0","../signup-view/signup-view":"4OGiN","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"7J5Ml","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"imYHo"}],"bwuIu":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$67b2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -41649,6 +41649,6 @@ $RefreshReg$(_c, "SignupView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"7J5Ml","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"imYHo"}],"lJZlQ":[function() {},{}]},["1HE3S","k9SBr","d8Dch"], "d8Dch", "parcelRequireaec4")
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"7J5Ml","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"imYHo"}],"lJZlQ":[function() {},{}]},["1HE3S","7gyKe","d8Dch"], "d8Dch", "parcelRequireaec4")
 
-//# sourceMappingURL=index.b4b6dfad.js.map
+//# sourceMappingURL=index.js.map

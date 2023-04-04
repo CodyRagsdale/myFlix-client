@@ -1,91 +1,33 @@
-body {
-  background-color: #f7f7f7;
-  font-family: Lato, sans-serif;
-}
-
-.btn-primary {
-  background-color: #ab369f;
-  border: none;
-}
-
-.btn-primary:hover, .btn-primary:focus {
-  box-shadow: none;
-  background-color: #842a7b;
-}
-
-.btn-accent {
-  background-color: #3c6e71;
-  border: none;
-}
-
-.btn-accent:hover, .btn-accent:focus {
-  box-shadow: none;
-  background-color: #2a4e50;
-}
-
-.text-primary {
-  color: #ab369f;
-}
-
-.text-accent {
-  color: #3c6e71;
-}
-
 .main-view {
-  padding: 50px;
+  margin-top: 50px;
 }
 
-.main-view .row {
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  display: flex;
+.main-view .text-center {
+  margin-top: 20px;
+  font-weight: bold;
 }
 
-.main-view .row .col-md-3 {
+.main-view .mt-3 {
+  margin-top: 30px;
+}
+
+.main-view .mb-4 {
   margin-bottom: 30px;
 }
 
 .main-view .btn-danger {
-  background-color: #f7f7f7;
+  background-color: #dc3545;
   border: none;
 }
 
-.main-view .btn-danger:hover {
-  background-color: #dedede;
+.main-view .btn-danger:hover, .main-view .btn-danger:focus {
+  box-shadow: none;
+  background-color: #bd2130;
 }
 
 body {
-  background-color: #f7f7f7;
+  background-color: #9dbeb7;
   font-family: Lato, sans-serif;
-}
-
-.btn-primary {
-  background-color: #ab369f;
-  border: none;
-}
-
-.btn-primary:hover, .btn-primary:focus {
-  box-shadow: none;
-  background-color: #842a7b;
-}
-
-.btn-accent {
-  background-color: #3c6e71;
-  border: none;
-}
-
-.btn-accent:hover, .btn-accent:focus {
-  box-shadow: none;
-  background-color: #2a4e50;
-}
-
-.text-primary {
-  color: #ab369f;
-}
-
-.text-accent {
-  color: #3c6e71;
 }
 
 /*# sourceMappingURL=index.2b25e0b4.css.map */
