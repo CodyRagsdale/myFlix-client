@@ -1,0 +1,32 @@
+.main-view {
+  margin-top: 50px;
+
+  .text-center {
+    margin-top: 20px;
+    font-weight: bold;
+  }
+
+  .mt-3 {
+    margin-top: 30px;
+  }
+
+  .mb-4 {
+    margin-bottom: 30px;
+  }
+
+  .btn-danger {
+    background-color: #dc3545;
+    border: none;
+
+    &:hover,
+    &:focus {
+      background-color: darken(#dc3545, 10%);
+      box-shadow: none;
+    }
+  }
+}
+
+.movie-col {
+  margin: left 10px;
+  margin: right 10px;
+}
