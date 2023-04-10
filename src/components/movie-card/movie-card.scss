@@ -23,9 +23,15 @@
     padding: 0;
   }
 
-  .Card-Title {
+  .card-title {
     font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 10px;
+    color: #212529;
+  }
+
+  .card-text-wrapper {
+    text-decoration: none;
+    color: #6c757d;
   }
 }

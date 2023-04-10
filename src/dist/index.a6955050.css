@@ -24,10 +24,16 @@
   overflow-y: auto;
 }
 
-.movie-card .Card-Title {
+.movie-card .card-title {
+  color: #212529;
   margin-bottom: 10px;
   font-size: 1.2rem;
   font-weight: bold;
+}
+
+.movie-card .card-text-wrapper {
+  color: #6c757d;
+  text-decoration: none;
 }
 
 body {

@@ -1,15 +1,7 @@
 body {
   background-color: #9dbeb7;
+  padding: 20px;
   font-family: Lato, sans-serif;
-}
-
-.row {
-  flex-flow: wrap;
-  justify-content: center;
-  align-items: center;
-  margin-left: -15px;
-  margin-right: -15px;
-  display: flex;
 }
 
 /*# sourceMappingURL=index.a9c166d0.css.map */

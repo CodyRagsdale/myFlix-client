@@ -1,11 +1,19 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Card } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 import './movie-card.scss';
 
-export const MovieCard = ({ movie, onMovieClick }) => {
+export const MovieCard = ({ movie }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/movies/${encodeURIComponent(movie._id)}`);
+  };
+
   return (
-    <Card onClick={() => onMovieClick(movie)} className="movie-card p-0">
+    <Card className="movie-card p-0" onClick={handleClick}>
       <Card.Img
         variant="top"
         src={movie.imagePath}
@@ -16,8 +24,10 @@ export const MovieCard = ({ movie, onMovieClick }) => {
         }}
       />
       <Card.Body>
-        <Card.Title>{movie.title}</Card.Title>
-        <Card.Text>{movie.description}</Card.Text>
+        <div className="card-text-wrapper">
+          <Card.Title>{movie.title}</Card.Title>
+          <Card.Text>{movie.description}</Card.Text>
+        </div>
       </Card.Body>
     </Card>
   );
@@ -25,7 +35,7 @@ export const MovieCard = ({ movie, onMovieClick }) => {
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    _id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     imagePath: PropTypes.string.isRequired,
@@ -38,5 +48,4 @@ MovieCard.propTypes = {
       description: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
-  onMovieClick: PropTypes.func.isRequired,
 };
