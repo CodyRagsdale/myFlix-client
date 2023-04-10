@@ -122,6 +122,8 @@ export const ProfileView = ({ user, movies, setMovies, setUser }) => {
     <Container className="profile-container">
       <h1 className="text-center">My Profile</h1>
       <Form className="profile-form">
+        <br></br>
+        <h2 className="text-center">Need to update your information?</h2>
         <Form.Group controlId="formUsername">
           <Form.Label>Username:</Form.Label>
           <Form.Control
