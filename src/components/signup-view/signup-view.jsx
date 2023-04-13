@@ -1,12 +1,14 @@
-import { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { useState } from 'react';
+import { Form, Button } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const SignupView = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [birthday, setBirthday] = useState("");
-  
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [birthday, setBirthday] = useState('');
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -14,28 +16,29 @@ export const SignupView = () => {
       username: username,
       password: password,
       email: email,
-      birthday: birthday
+      birthday: birthday,
     };
 
-    fetch("https://dark-blue-lizard-kilt.cyclic.app/users", {
-      method: "POST",
+    fetch('https://dark-blue-lizard-kilt.cyclic.app/users', {
+      method: 'POST',
       body: JSON.stringify(data),
       headers: {
-        "Content-Type": "application/json"
-      }
-    }).then((response) => {
-      if (response.ok) {
-        alert("Signup succesful!");
-        window.location.reload();
-      } else {
-        alert("Signup failed!");
-      }
-    });
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert('Signup successful!');
+          navigate('/login');
+        } else {
+          alert('Signup failed!');
+        }
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
-    <Form class="signup-view" onSubmit={handleSubmit}>
-      <Form.Text className="text-muted">Not Registered?</Form.Text>
+    <Form className="signup-view" onSubmit={handleSubmit}>
       <Form.Group controlId="formUsername">
         <Form.Label>Username:</Form.Label>
         <Form.Control
@@ -80,6 +83,9 @@ export const SignupView = () => {
       <Button variant="primary" type="submit">
         Submit
       </Button>
+      <p>
+        Already a member? <Link to="/login">Login</Link>
+      </p>
     </Form>
   );
 };
