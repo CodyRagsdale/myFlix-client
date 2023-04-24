@@ -7,6 +7,7 @@ import { NavigationBar } from '../navigation-bar/navigation-bar';
 import { ProfileView } from '../profile-view/profile-view';
 import { Container, Row, Col } from 'react-bootstrap';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import './main-view.scss';
 
 export const MainView = () => {
   const storedUser = localStorage.getItem('user');
@@ -14,6 +15,17 @@ export const MainView = () => {
   const [user, setUser] = useState(storedUser ? JSON.parse(storedUser) : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const onLoggedOut = () => {
+    setUser(null);
+    setToken(null);
+    localStorage.clear();
+  };
+
+  const filteredMovies = movies.filter((movie) =>
+    movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   useEffect(() => {
     if (!token) {
@@ -36,8 +48,9 @@ export const MainView = () => {
           },
           director: {
             name: movie.director.name,
-            description: movie.director.description,
+            bio: movie.director.bio,
           },
+          releaseYear: movie.releaseYear,
         }));
         setMovies(moviesFromApi);
       });
@@ -58,11 +71,9 @@ export const MainView = () => {
     <BrowserRouter>
       <NavigationBar
         user={user}
-        onLoggedOut={() => {
-          setUser(null);
-          setToken(null);
-          localStorage.clear();
-        }}
+        onLoggedOut={onLoggedOut}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
       />
       <Container>
         <div style={{ marginTop: '80px' }}>
@@ -72,8 +83,8 @@ export const MainView = () => {
               element={
                 user ? (
                   movies.length !== 0 ? (
-                    <Row>
-                      {movies.map((movie) => (
+                    <Row noGutters className="justify-content-center">
+                      {filteredMovies.map((movie) => (
                         <Col
                           xs={12}
                           sm={6}
@@ -83,6 +94,7 @@ export const MainView = () => {
                           style={{
                             marginLeft: '20px',
                             marginRight: '20px',
+                            padding: '0px',
                           }}
                         >
                           <MovieCard movie={movie} />
@@ -106,7 +118,7 @@ export const MainView = () => {
                   {user ? (
                     <Navigate to="/" />
                   ) : (
-                    <Col md={5}>
+                    <Col md={12}>
                       <LoginView onLoggedIn={(user) => setUser(user)} />
                     </Col>
                   )}
@@ -118,8 +130,8 @@ export const MainView = () => {
               path="/movies/:movieId"
               element={
                 user ? (
-                  <Row>
-                    <Col md={8} className="mt-3">
+                  <Row className="justify-content-center">
+                    <Col md={12} className="mt-3">
                       <MovieView
                         movies={movies}
                         user={user}
@@ -136,13 +148,15 @@ export const MainView = () => {
               path="/users/:username"
               element={
                 user ? (
-                  <Row>
-                    <Col md={8} className="mt-3">
+                  <Row className="justify-content-center">
+                    <Col md={12} className="mt-3">
                       <ProfileView
                         user={user}
                         movies={movies}
                         setMovies={setMovies}
                         setUser={setUser}
+                        onLoggedOut={onLoggedOut}
+                        updateUserFavorites={updateUserFavorites}
                       />
                     </Col>
                   </Row>

@@ -3,10 +3,30 @@
   cursor: pointer;
   min-width: 200px;
   transition: all .2s ease-in-out;
+  position: relative;
 }
 
 .movie-card:hover {
   transform: translateY(-10px);
+}
+
+.movie-card:before {
+  content: "Click for more information";
+  color: #fff;
+  opacity: 0;
+  background-color: #0009;
+  border-radius: 5px;
+  padding: 10px;
+  transition: all .3s;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%)scale(0);
+}
+
+.movie-card:hover:before {
+  opacity: 1;
+  transform: translate(-50%, -50%)scale(1);
 }
 
 .movie-card img {
@@ -17,17 +37,19 @@
 
 .movie-card .card-body {
   width: 100%;
-  height: 200px;
+  height: 90px;
   background-color: #f8f9fa;
-  border-top: 1px solid #dee2e6;
-  padding: 0;
+  border-top: 3px solid #dee2e6;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
   overflow-y: auto;
 }
 
 .movie-card .card-title {
   color: #212529;
-  margin-bottom: 10px;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: bold;
 }
 
@@ -36,10 +58,152 @@
   text-decoration: none;
 }
 
-body {
-  background-color: #9dbeb7;
+.movie-view {
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+  display: flex;
+}
+
+.movie-view .movie-details {
+  width: 100%;
+  max-width: 800px;
+  background-color: #fff;
+  margin: 0 auto;
   padding: 20px;
-  font-family: Lato, sans-serif;
+}
+
+.movie-view .movie-label {
+  font-weight: bold;
+}
+
+.movie-view .similar-movies {
+  margin-top: 30px;
+}
+
+.movie-view .similar-movies h4 {
+  margin-bottom: 10px;
+}
+
+.movie-view .similar-movies .movie-card {
+  max-width: 800px;
+}
+
+.movie-view .similar-movies .movie-card:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.movie-view .similar-movies .movie-card .card-text-wrapper {
+  max-height: 100px;
+  overflow: hidden;
+}
+
+.movie-view .similar-movies .movie-card-container {
+  flex-wrap: wrap;
+  justify-content: center;
+  display: flex;
+}
+
+.movie-view .similar-movies .movie-card-container .movie-card {
+  max-width: 800px;
+  margin: 10px;
+}
+
+.movie-view .favorite-button {
+  width: 50%;
+  margin-right: 10px;
+}
+
+.movie-view .back-button {
+  width: 100%;
+  background-color: #000;
+  outline: none;
+}
+
+.movie-view .back-button:hover {
+  color: #000;
+  border-color: none;
+  background-color: #fff;
+}
+
+.movie-view .back-button button {
+  margin-top: 20px;
+}
+
+@media only screen and (max-width: 767px) {
+  .movie-view .movie-view {
+    padding: 20px;
+  }
+
+  .movie-view .movie-details {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+}
+
+#formUsername.form-control {
+  width: 100%;
+}
+
+#formPassword.form-control {
+  width: 100% !important;
+}
+
+.login-view {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 50px;
+}
+
+.login-view h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login-view .form-group {
+  margin-bottom: 20px;
+}
+
+.login-view label {
+  font-weight: bold;
+}
+
+.login-view button[type="submit"] {
+  width: 100%;
+}
+
+.main-view {
+  margin-top: 50px;
+}
+
+.main-view .text-center {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.main-view .mt-3 {
+  margin-top: 30px;
+}
+
+.main-view .mb-4 {
+  margin-bottom: 30px;
+}
+
+.main-view .btn-danger {
+  background-color: #dc3545;
+  border: none;
+}
+
+.main-view .btn-danger:hover, .main-view .btn-danger:focus {
+  box-shadow: none;
+  background-color: #bd2130;
+}
+
+.movie-col {
+  margin: left 10px;
+  margin: right 10px;
 }
 
 :root {
@@ -12048,6 +12212,20 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+}
+
+body {
+  background-color: #efe6d5;
+  justify-content: space-evenly;
+  padding: 0;
+  font-family: Lato, sans-serif;
+  display: flex;
+}
+
+.content-container {
+  width: 100%;
+  justify-content: center;
+  display: flex;
 }
 
 /*# sourceMappingURL=index.a6955050.css.map */

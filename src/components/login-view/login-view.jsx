@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useNavigate, Link } from 'react-router-dom';
+import './login-view.scss';
 
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState('');
@@ -44,7 +45,7 @@ export const LoginView = ({ onLoggedIn }) => {
           minLength="3"
         />
       </Form.Group>
-
+      <br />
       <Form.Group controlId="formPassword">
         <Form.Label>Password:</Form.Label>
         <Form.Control
@@ -54,14 +55,15 @@ export const LoginView = ({ onLoggedIn }) => {
           required
         />
       </Form.Group>
-
+      <br />
       <Button variant="primary" type="submit">
         Submit
       </Button>
 
       <div className="mt-3">
         <span>Not a member yet? </span>
-        <Link to="/signup">Sign up</Link>
+        <br></br>
+        <Link to="/signup">Sign up!</Link>
       </div>
     </Form>
   );

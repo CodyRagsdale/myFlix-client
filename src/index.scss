@@ -1,12 +1,26 @@
+@import '~bootstrap/scss/bootstrap';
+
 $primary-color: #efe6d5;
 $secondary-color: #9dbeb7;
 $accent-color: #e73213;
 $font-family: 'Lato', sans-serif;
 
 body {
-  background-color: $secondary-color;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: $primary-color;
   font-family: $font-family;
-  padding: 20px;
+  padding: 30px;
 }
 
-@import '~bootstrap/scss/bootstrap';
+.content-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

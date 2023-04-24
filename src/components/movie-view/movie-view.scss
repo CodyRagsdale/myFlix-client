@@ -1,21 +1,110 @@
 .movie-view {
-    .card-img-top {
-        height: 500px;
-        object-fit: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+
+  .movie-label {
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+
+  .card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+  }
+
+  .card-img-top {
+    flex-shrink: 0;
+    object-fit: cover;
+  }
+
+  .movie-details {
+    background-color: white;
+    width: 100%;
+    flex-basis: auto;
+    max-width: 800px;
+    margin: 20px 0;
+    padding: 20px;
+    overflow-y: auto;
+    margin-top: 0;
+  }
+
+  .similar-movies {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 30px;
+    max-width: 800px;
+    margin-top: 5%;
+    background-color: whitesmoke;
+    padding: 5%;
+
+    .similar-movie-card {
+      margin: 5px;
+      min-width: 200px;
+      max-width: 300px;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
-    .card-body {
-        background-color: #f8f9fa;
-        border-top: 1px solid #dee2e6;
+    .col {
+      margin: 0 5px;
+    }
+  }
+
+  .favorite-button {
+    padding: 10px;
+    width: 50%;
+    box-sizing: unset;
+    margin-bottom: 2%;
+    font-weight: bold;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .back-button {
+    width: 100%;
+    background-color: #9dbeb7;
+    outline: none;
+    border: none;
+    font-weight: bold;
+    margin-top: 10%;
+
+    &:hover {
+      background-color: #9dbeb7;
+      border-color: none;
+      transform: scale(1.1);
     }
 
-    .card-title {
-        font-size: 1.5rem;
-        font-weight: bold;
-        margin-bottom: 10px;
+    button {
+      margin-top: 2%;
+    }
+  }
+
+  /* Small screens */
+  @media only screen and (max-width: 767px) {
+    .movie-details {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      max-height: none;
     }
 
-    .card-text {
-        margin-bottom: 10px;
+    .similar-movies {
+      margin-top: 20px;
+      margin-bottom: 20px;
     }
+
+    .favorite-button {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
 }

@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
-import './movie-card.scss';
+import './similar-movie-card.scss';
 
-export const MovieCard = ({ movie, onClick }) => {
+export const SimilarMovieCard = ({ movie, onClick }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -16,6 +16,7 @@ export const MovieCard = ({ movie, onClick }) => {
     <Card className="movie-card p-0" onClick={handleClick}>
       <Card.Img
         variant="top"
+        alt={movie.title}
         src={movie.imagePath}
         style={{
           height: '100%',
@@ -23,17 +24,11 @@ export const MovieCard = ({ movie, onClick }) => {
           maxWidth: '100%',
         }}
       />
-      <Card.Body>
-        <h2>
-          <Card.Title>{movie.title}</Card.Title>
-        </h2>
-        <p>({movie.releaseYear})</p>
-      </Card.Body>
     </Card>
   );
 };
 
-MovieCard.propTypes = {
+SimilarMovieCard.propTypes = {
   movie: PropTypes.shape({
     _id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,

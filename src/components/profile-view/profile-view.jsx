@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Form, Button, Card } from 'react-bootstrap';
+import { Container, Form, Button, Card, Col, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { ListGroup } from 'react-bootstrap';
-import { MovieCard } from '../movie-card/movie-card';
+import { SimilarMovieCard } from '../similar-movie-card/similar-movie-card';
 
-export const ProfileView = ({ user, movies, setMovies, setUser }) => {
+export const ProfileView = ({
+  user,
+  movies,
+  setMovies,
+  setUser,
+  onLoggedOut,
+  updateUserFavorites,
+}) => {
   const [username, setUsername] = useState(user.username);
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState(user.email);
@@ -12,6 +18,9 @@ export const ProfileView = ({ user, movies, setMovies, setUser }) => {
     new Date(user.birthday).toISOString().split('T')[0]
   );
   const [favorites, setFavorites] = useState([]);
+  const navigate = useNavigate();
+  const [showButton, setShowButton] = useState(false);
+  const [hoverEnabled, setHoverEnabled] = useState(false);
 
   const fetchFavoriteMovies = () => {
     if (!user || !user.favorites || user.favorites.length === 0) {
@@ -30,6 +39,21 @@ export const ProfileView = ({ user, movies, setMovies, setUser }) => {
     fetchFavoriteMovies();
   }, [user, movies]);
 
+  useEffect(() => {
+    const detectHover = () => {
+      const hoverSupported = window.matchMedia('(hover: hover)').matches;
+      setHoverEnabled(hoverSupported);
+    };
+
+    detectHover();
+    window.addEventListener('resize', detectHover);
+
+    return () => {
+      window.removeEventListener('resize', detectHover);
+    };
+  }, []);
+
+  // Allows a user to update their information details
   const handleUpdate = (e) => {
     e.preventDefault();
     fetch(`https://dark-blue-lizard-kilt.cyclic.app/users/${user.username}`, {
@@ -53,6 +77,7 @@ export const ProfileView = ({ user, movies, setMovies, setUser }) => {
       .catch((e) => console.log(e));
   };
 
+  // Allows a user to delete their account
   const handleDelete = () => {
     const confirmDeletion = window.confirm(
       'Are you sure you want to delete your account?'
@@ -68,12 +93,14 @@ export const ProfileView = ({ user, movies, setMovies, setUser }) => {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     })
-      .then((res) => res.json())
+      .then((res) => res.text())
       .then((data) => {
         alert(data);
         setUser(null);
         localStorage.removeItem('user');
         localStorage.removeItem('token');
+        navigate('/login');
+        onLoggedOut();
       })
       .catch((e) => console.log(e));
   };
@@ -98,6 +125,7 @@ export const ProfileView = ({ user, movies, setMovies, setUser }) => {
   };
 
   const handleRemoveFromFavorites = (movieId) => {
+    console.log('Removing movie with ID:', movieId);
     fetch(
       `https://dark-blue-lizard-kilt.cyclic.app/users/${user.username}/movies/${movieId}`,
       {
@@ -109,19 +137,47 @@ export const ProfileView = ({ user, movies, setMovies, setUser }) => {
     )
       .then((response) => response.json())
       .then((data) => {
-        alert('Removed from favorites!');
         const updatedFavorites = favorites.filter(
           (favorite) => favorite._id !== data._id
         );
         setFavorites(updatedFavorites);
+        updateUserFavorites(movieId, 'remove'); // Use updateUserFavorites function
       })
       .catch((error) => console.log(error));
   };
 
   return (
-    <Container className="profile-container">
-      <h1 className="text-center">My Profile</h1>
-      <Form className="profile-form">
+    <Container
+      className="profile-container"
+      style={{
+        backgroundColor: '#9dbeb7',
+        padding: '20px',
+        width: '150%',
+        justifyContent: 'center',
+      }}
+    >
+      <style>
+        {`
+        .profile-form {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 25%;
+          margin: 0 auto;
+        }
+
+
+        @media screen and (max-width: 768px) {
+          .profile-form {
+            width: 75%;
+          }
+        }
+      `}
+      </style>
+      <h1 className="text-center" style={{ textDecoration: 'bold' }}>
+        {user.username}'s Profile
+      </h1>
+      <Form className="profile-form" style={{ width: '25%' }}>
         <br></br>
         <h2 className="text-center">Need to update your information?</h2>
         <Form.Group controlId="formUsername">
@@ -166,33 +222,109 @@ export const ProfileView = ({ user, movies, setMovies, setUser }) => {
             required
           />
         </Form.Group>
-
-        <Button variant="primary" type="submit" onClick={handleUpdate}>
+        <br />
+        <Button
+          variant="primary"
+          type="submit"
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+          onClick={handleUpdate}
+        >
           Update
         </Button>
+        <br></br>
+        <h4>or</h4>
+        <br></br>
         <Button variant="danger" type="button" onClick={handleDelete}>
           Delete Account
         </Button>
       </Form>
       <br />
-
+      <br />
+      <br />
       <h2 className="text-center">Favorite Movies</h2>
-      <ListGroup>
+      <Row
+        className="justify-content-center"
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+        }}
+      >
         {favorites.length > 0 ? (
           favorites
             .filter((movie) => movie !== null)
             .map((movie) => (
-              <MovieCard
+              <Col
                 key={movie._id}
-                movie={movie}
-                user={user}
-                onAddToFavorites={(movieId) => handleAddToFavorites(movieId)}
-              />
+                xs={3}
+                sm={3}
+                md={3}
+                lg={3}
+                className="d-flex justify-content-center mb-4"
+                style={{
+                  position: 'relative',
+                  minHeight: '400px',
+                  minWidth: '300px',
+                  margin: '5px',
+                }}
+              >
+                <div
+                  style={{
+                    position: 'relative',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: '100%',
+                    minWidth: '150px',
+                    maxWidth: '1000px',
+                  }}
+                  onMouseEnter={() => {
+                    if (hoverEnabled) {
+                      setShowButton(true);
+                    }
+                  }}
+                  onMouseLeave={() => {
+                    if (hoverEnabled) {
+                      setShowButton(false);
+                    }
+                  }}
+                >
+                  <SimilarMovieCard
+                    key={movie._id}
+                    movie={movie}
+                    user={user}
+                    onAddToFavorites={(movieId) =>
+                      handleAddToFavorites(movieId)
+                    }
+                  />
+                  <Button
+                    variant="danger"
+                    style={{
+                      position: 'absolute',
+                      bottom: 0,
+                      left: 0,
+                      width: '100%',
+                      height: '50px',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      transition: 'all 0.3s ease',
+                      opacity: hoverEnabled && showButton ? 1 : 0,
+
+                      zIndex: 1,
+                    }}
+                    onClick={() => handleRemoveFromFavorites(movie._id)}
+                  >
+                    Remove from Favorites
+                  </Button>
+                </div>
+              </Col>
             ))
         ) : (
           <h3>No favorite movies added yet.</h3>
         )}
-      </ListGroup>
+      </Row>
     </Container>
   );
 };
