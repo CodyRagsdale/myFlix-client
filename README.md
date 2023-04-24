@@ -1,6 +1,4 @@
 # myFlix-client
- 
-# myFlix-client
 
 This is the front-end for the myFlix movie app. Intended to be used in conjunction with the movie-api repository also found on my profile.
 
