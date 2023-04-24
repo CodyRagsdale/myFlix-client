@@ -8,14 +8,14 @@ myFlix is a movie enthusiast web application that allows users to browse, search
 
 ## Features
 
-- User registration and authentication
-- Browse and search movie catalog
-- View movie details
-- Add and remove movies from a list of favorites
-- Responsive design for various devices and screen sizes
+-User registration and authentication
+-Browse and search movie catalog
+-View movie details
+-Add and remove movies from a list of favorites
+-Responsive design for various devices and screen sizes
 
 ## Technologies
 
-- React
-- React Router
-- React Bootstrap
+-React
+-React Router
+-React Bootstrap
