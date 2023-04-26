@@ -18,3 +18,7 @@ The objective of this project was to build the client-side of the myFlix app usi
 - React
 - React Router
 - React Bootstrap
+
+## Link to hosted project
+
+https://myflixmovieproject.netlify.app/
