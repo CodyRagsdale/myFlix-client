@@ -15,6 +15,7 @@ export const MainView = () => {
   const [user, setUser] = useState(storedUser ? JSON.parse(storedUser) : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
 
   const onLoggedOut = () => {
@@ -54,7 +55,7 @@ export const MainView = () => {
         }));
         setMovies(moviesFromApi);
       });
-  }, [token]);
+  }, [token, loggedIn]);
 
   const updateUserFavorites = (movieId, action) => {
     if (action === 'add') {
@@ -119,7 +120,12 @@ export const MainView = () => {
                     <Navigate to="/" />
                   ) : (
                     <Col md={12}>
-                      <LoginView onLoggedIn={(user) => setUser(user)} />
+                      <LoginView
+                        onLoggedIn={(user) => {
+                          setUser(user);
+                          setLoggedIn(true);
+                        }}
+                      />
                     </Col>
                   )}
                 </>
