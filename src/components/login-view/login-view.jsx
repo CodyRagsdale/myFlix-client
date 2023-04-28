@@ -34,9 +34,14 @@ export const LoginView = ({ onLoggedIn }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form
+      onSubmit={handleSubmit}
+      style={{ paddingTop: '45px', display: 'flex', flexDirection: 'column' }}
+    >
       <Form.Group controlId="formUsername">
-        <Form.Label>Username:</Form.Label>
+        <Form.Label style={{ fontWeight: 'bold', padding: '3px' }}>
+          Username:
+        </Form.Label>
         <Form.Control
           type="text"
           value={username}
@@ -47,7 +52,9 @@ export const LoginView = ({ onLoggedIn }) => {
       </Form.Group>
       <br />
       <Form.Group controlId="formPassword">
-        <Form.Label>Password:</Form.Label>
+        <Form.Label style={{ fontWeight: 'bold', padding: '3px' }}>
+          Password:
+        </Form.Label>
         <Form.Control
           type="password"
           value={password}
@@ -61,9 +68,15 @@ export const LoginView = ({ onLoggedIn }) => {
       </Button>
 
       <div className="mt-3">
-        <span>Not a member yet? </span>
-        <br></br>
-        <Link to="/signup">Sign up!</Link>
+        <p style={{ fontWeight: 'bold', padding: '3px', textAlign: 'center' }}>
+          Not a member yet?{' '}
+          <Link
+            style={{ fontWeight: 'bold', padding: '3px', textAlign: 'center' }}
+            to="/signup"
+          >
+            Sign up!
+          </Link>
+        </p>
       </div>
     </Form>
   );

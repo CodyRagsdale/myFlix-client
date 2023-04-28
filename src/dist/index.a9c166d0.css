@@ -12151,7 +12151,7 @@ body {
   width: 50%;
   box-sizing: unset;
   margin-bottom: 2%;
-  padding: 10px;
+  padding: 5px;
   font-weight: bold;
 }
 
@@ -12312,11 +12312,6 @@ body {
 .main-view .btn-danger:hover, .main-view .btn-danger:focus {
   box-shadow: none;
   background-color: #bd2130;
-}
-
-.movie-col {
-  margin: left 10px;
-  margin: right 10px;
 }
 
 /*# sourceMappingURL=index.a9c166d0.css.map */

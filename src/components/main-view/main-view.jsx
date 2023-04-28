@@ -63,7 +63,9 @@ export const MainView = () => {
     } else if (action === 'remove') {
       setUser({
         ...user,
-        favorites: user.favorites.filter((id) => id !== movieId),
+        favorites: user.favorites.filter((id) => {
+          return id !== movieId;
+        }),
       });
     }
   };
@@ -77,7 +79,7 @@ export const MainView = () => {
         setSearchTerm={setSearchTerm}
       />
       <Container>
-        <div style={{ marginTop: '80px' }}>
+        <div style={{ marginTop: '0px', padding: '45px' }}>
           <Routes>
             <Route
               path="/"
@@ -93,9 +95,7 @@ export const MainView = () => {
                           key={movie._id}
                           className="mb-4 movie-col"
                           style={{
-                            marginLeft: '20px',
-                            marginRight: '20px',
-                            padding: '0px',
+                            paddingTop: '55px',
                           }}
                         >
                           <MovieCard movie={movie} />

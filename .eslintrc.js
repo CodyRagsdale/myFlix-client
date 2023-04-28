@@ -9,5 +9,6 @@ module.exports = {
   rules: {
     // custom rules can be added here
     'prefer-const': 'error',
+    'arrow-body-style': ['error', 'never'],
   },
 };

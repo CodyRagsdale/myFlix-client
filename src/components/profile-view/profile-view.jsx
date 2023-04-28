@@ -152,8 +152,9 @@ export const ProfileView = ({
       style={{
         backgroundColor: '#9dbeb7',
         padding: '20px',
-        width: '150%',
+        width: '75%',
         justifyContent: 'center',
+        borderRadius: '10px',
       }}
     >
       <style>
@@ -177,10 +178,20 @@ export const ProfileView = ({
       <h1 className="text-center" style={{ textDecoration: 'bold' }}>
         {user.username}'s Profile
       </h1>
-      <Form className="profile-form" style={{ width: '25%' }}>
+      <Form
+        className="profile-form"
+        style={{
+          width: '25%',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
         <br></br>
         <h2 className="text-center">Need to update your information?</h2>
-        <Form.Group controlId="formUsername">
+        <Form.Group
+          controlId="formUsername"
+          style={{ fontWeight: 'bold', padding: '10px', width: '100%' }}
+        >
           <Form.Label>Username:</Form.Label>
           <Form.Control
             type="text"
@@ -190,7 +201,10 @@ export const ProfileView = ({
             required
           />
         </Form.Group>
-        <Form.Group controlId="formPassword">
+        <Form.Group
+          controlId="formPassword"
+          style={{ fontWeight: 'bold', padding: '5px', width: '100%' }}
+        >
           <Form.Label>Password:</Form.Label>
           <Form.Control
             type="password"
@@ -201,7 +215,10 @@ export const ProfileView = ({
           />
         </Form.Group>
 
-        <Form.Group controlId="formEmail">
+        <Form.Group
+          controlId="formEmail"
+          style={{ fontWeight: 'bold', padding: '5px', width: '100%' }}
+        >
           <Form.Label>Email:</Form.Label>
           <Form.Control
             type="email"
@@ -212,7 +229,10 @@ export const ProfileView = ({
           />
         </Form.Group>
 
-        <Form.Group controlId="formBirthdate">
+        <Form.Group
+          controlId="formBirthdate"
+          style={{ fontWeight: 'bold', padding: '5px', width: '100%' }}
+        >
           <Form.Label>Birthdate:</Form.Label>
           <Form.Control
             type="date"
